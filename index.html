@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Event Portal & Deadline Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== 1. ONBOARDING SCREEN ==================== -->
+  <main id="onboarding-screen" class="container">
+    <div class="card onboarding-card">
+      <div class="header">
+        <h1>🚀 Tech and Hackathon Event Finder</h1>
+        <p>Set up your profile to uncover matching hackathons and track upcoming deadlines.</p>
+      </div>
+
+      <form id="onboarding-form">
+        <div class="form-group">
+          <label for="student-name">Full Name</label>
+          <input type="text" id="student-name" placeholder="e.g. Rahul Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label for="student-location">Preferred Location</label>
+          <select id="student-location" required>
+            <option value="Bengaluru" selected>Bengaluru (In-Person & Hybrid)</option>
+            <option value="Online">Online Only</option>
+            <option value="All">All Locations</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Select Your Primary Tech Stack / Skills</label>
+          <div class="skills-grid">
+            <label class="skill-chip"><input type="checkbox" value="Python" /> Python</label>
+            <label class="skill-chip"><input type="checkbox" value="AI/ML" /> AI / Machine Learning</label>
+            <label class="skill-chip"><input type="checkbox" value="JavaScript" /> JavaScript</label>
+            <label class="skill-chip"><input type="checkbox" value="HTML/CSS" /> Web Dev (HTML/CSS)</label>
+            <label class="skill-chip"><input type="checkbox" value="React" /> React / Frontend</label>
+            <label class="skill-chip"><input type="checkbox" value="Node.js" /> Node.js / Backend</label>
+            <label class="skill-chip"><input type="checkbox" value="Cybersecurity" /> Cybersecurity</label>
+            <label class="skill-chip"><input type="checkbox" value="Web3" /> Web3 / Blockchain</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Explore Hackathons ➔</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- ==================== 2. MAIN DASHBOARD SCREEN ==================== -->
+  <div id="dashboard-screen" class="container" style="display: none;">
+    
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <h2>🚀 Hackathon Portal</h2>
+      </div>
+      <nav class="nav-links">
+        <button id="nav-explore" class="nav-btn active" onclick="switchTab('explore')">Explore Events</button>
+        <button id="nav-deadlines" class="nav-btn" onclick="switchTab('deadlines')">My Saved & Deadlines</button>
+        <button class="nav-btn btn-outline" onclick="resetProfile()">Edit Profile</button>
+      </nav>
+    </header>
+
+    <!-- User Welcome Banner -->
+    <section class="welcome-banner">
+      <p id="user-greeting">Welcome back!</p>
+    </section>
+
+    <!-- Tab 1: Explore View (Split Dashboard) -->
+    <main id="explore-view">
+      <section class="dashboard-section">
+        <div class="section-header">
+          <h2>🎯 Recommended for You</h2>
+          <p>Events matched based on your technical skill set.</p>
+        </div>
+        <div id="recommended-grid" class="cards-grid"></div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="section-header">
+          <h2>🔍 All Hackathons</h2>
+          <p>Explore all upcoming events in Bengaluru and Online.</p>
+        </div>
+        <div id="all-events-grid" class="cards-grid"></div>
+      </section>
+    </main>
+
+    <!-- Tab 2: My Deadlines & Tracked Events View -->
+    <main id="deadlines-view" style="display: none;">
+      <section class="dashboard-section">
+        <div class="section-header">
+          <h2>🗓️ My Tracked Events & Closing Deadlines</h2>
+          <p>Monitor status and upcoming registration deadlines for your saved events.</p>
+        </div>
+        <div id="deadlines-list-container" class="deadlines-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==================== 3. EVENT DETAILS MODAL ==================== -->
+  <div id="event-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
